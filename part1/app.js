@@ -36,12 +36,12 @@ async function insertTestData() {
           '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
          ((SELECT dog_id FROM Dogs WHERE name = 'Bella' AND owner_id = (SELECT user_id FROM Users WHERE username = 'carol123')), 
           '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
-((SELECT dog_id FROM Dogs WHERE name = 'Rocky' AND owner_id = (SELECT user_id FROM Users WHERE username = 'alice123')), 
- '2025-06-11 10:00:00', 60, 'Greenhill Park', 'open'),
-((SELECT dog_id FROM Dogs WHERE name = 'Daisy' AND owner_id = (SELECT user_id FROM Users WHERE username = 'emilyowner')), 
- '2025-06-12 15:30:00', 40, 'Lakeside Trail', 'cancelled'),
-((SELECT dog_id FROM Dogs WHERE name = 'Luna' AND owner_id = (SELECT user_id FROM Users WHERE username = 'carol123')), 
- '2025-06-13 07:45:00', 50, 'Sunnyvale Street', 'completed')`);
+         ((SELECT dog_id FROM Dogs WHERE name = 'Rocky' AND owner_id = (SELECT user_id FROM Users WHERE username = 'alice123')), 
+          '2025-06-11 10:00:00', 60, 'Greenhill Park', 'open'),
+         ((SELECT dog_id FROM Dogs WHERE name = 'Daisy' AND owner_id = (SELECT user_id FROM Users WHERE username = 'emilyowner')), 
+          '2025-06-12 15:30:00', 40, 'Lakeside Trail', 'cancelled'),
+         ((SELECT dog_id FROM Dogs WHERE name = 'Luna' AND owner_id = (SELECT user_id FROM Users WHERE username = 'carol123')), 
+          '2025-06-13 07:45:00', 50, 'Sunnyvale Street', 'completed')`);
 
     // Insert ratings
     await db.execute(`INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
