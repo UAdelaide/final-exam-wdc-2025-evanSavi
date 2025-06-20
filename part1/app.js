@@ -23,9 +23,29 @@ async function insertTestData() {
          ('emilyowner', 'emily@example.com', 'hashedxyz', 'owner')`);
 
     // Insert dogs
-    await db.execute(`INSERT INTO Dogs (owner_id, name, size) VALUES
-      (1, 'Max', 'medium'),
-      (2, 'Bella', 'small')`);
+    await db.execute(`INSERT INTO Dogs (owner_id, name, size)
+VALUES
+((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
+((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
+((SELECT user_id FROM Users WHERE username = 'alice123'), 'Rocky', 'large'),
+((SELECT user_id FROM Users WHERE username = 'emilyowner'), 'Daisy', 'small'),
+((SELECT user_id FROM Users WHERE username = 'carol123'), 'Luna', 'medium');
+
+
+
+
+INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+VALUES
+((SELECT dog_id FROM Dogs WHERE name = 'Max' AND owner_id = (SELECT user_id FROM Users WHERE username = 'alice123')), 
+ '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
+((SELECT dog_id FROM Dogs WHERE name = 'Bella' AND owner_id = (SELECT user_id FROM Users WHERE username = 'carol123')), 
+ '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
+((SELECT dog_id FROM Dogs WHERE name = 'Rocky' AND owner_id = (SELECT user_id FROM Users WHERE username = 'alice123')), 
+ '2025-06-11 10:00:00', 60, 'Greenhill Park', 'open'),
+((SELECT dog_id FROM Dogs WHERE name = 'Daisy' AND owner_id = (SELECT user_id FROM Users WHERE username = 'emilyowner')), 
+ '2025-06-12 15:30:00', 40, 'Lakeside Trail', 'cancelled'),
+((SELECT dog_id FROM Dogs WHERE name = 'Luna' AND owner_id = (SELECT user_id FROM Users WHERE username = 'carol123')), 
+ '2025-06-13 07:45:00', 50, 'Sunnyvale Street', 'completed');`);
 
     // Insert walk requests
     await db.execute(`INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status) VALUES
