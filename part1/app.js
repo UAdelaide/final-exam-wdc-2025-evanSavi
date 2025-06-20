@@ -24,11 +24,11 @@ async function insertTestData() {
 
     // Insert dogs
     await db.execute(`INSERT INTO Dogs (owner_id, name, size) VALUES
-     ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
-((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
-((SELECT user_id FROM Users WHERE username = 'alice123'), 'Rocky', 'large'),
-((SELECT user_id FROM Users WHERE username = 'emilyowner'), 'Daisy', 'small'),
-((SELECT user_id FROM Users WHERE username = 'carol123'), 'Luna', 'medium');`);
+         ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
+         ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
+         ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Rocky', 'large'),
+         ((SELECT user_id FROM Users WHERE username = 'emilyowner'), 'Daisy', 'small'),
+         ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Luna', 'medium')`);
 
     // Insert walk requests
     await db.execute(`INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status) VALUES
