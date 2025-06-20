@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOGGO!</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <style>
+    body {
+      background: url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif');
+      color: #ff00ff;
+      font-family: Comic Sans MS;
+      font-size: 22px;
+    }
+    button {
+      margin: 100px;
+      padding: 50px;
+      font-size: 30px;
+      background-color: lime;
+    }
+    .dog-info {
+      animation: spin 3s infinite linear;
+      margin-top: 20px;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>DOG OF THE DAY 🐶🐶🐶🐶🐶</h1>
+    <p style="font-size: 28px;">Click the massive button to see a dog 🐕! Don't forget to admire it for a while.</p>
+    <button @click="fetchDoggo">SHOW ME DOGGO NOW</button>
+
+    <div class="dog-info" v-if="dogUrl">
+      <img :src="dogUrl" alt="A dog" style="max-width: 80%; border: 5px dashed red;" />
+      <p>This is your dog today: SPARKLEBLASTER THE 3RD, a royal retriever-terrier-corgi hybrid.</p>
+      <p>Wow isn't that something.</p>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          dogUrl: null
+        };
+      },
+      methods: {
+        fetchDoggo() {
+          fetch('https://dog.ceo/api/breeds/image/random')
+            .then(res => res.json())
+            .then(data => {
+              this.dogUrl = data.message;
+            });
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
