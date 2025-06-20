@@ -16,12 +16,12 @@ async function insertTestData() {
 
     // Insert users
     await db.execute(`INSERT INTO Users (username, email, password_hash, role)
-VALUES 
-('alice123', 'alice@example.com', 'hashed123', 'owner'),
-('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
-('carol123', 'carol@example.com', 'hashed789', 'owner'),
-('davidwalker', 'david@example.com', 'hashedabc', 'walker'),
-('emilyowner', 'emily@example.com', 'hashedxyz', 'owner');`);
+	VALUES 
+	('alice123', 'alice@example.com', 'hashed123', 'owner'),
+	('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
+	('carol123', 'carol@example.com', 'hashed789', 'owner'),
+	('davidwalker', 'david@example.com', 'hashedabc', 'walker'),
+	('emilyowner', 'emily@example.com', 'hashedxyz', 'owner');`);
 
     // Insert dogs
     await db.execute(`INSERT INTO Dogs (owner_id, name, size) VALUES
