@@ -30,7 +30,7 @@
   <div id="app">
     <h1>DOG OF THE DAY 🐶🐶🐶🐶🐶</h1>
     <p style="font-size: 28px;">Click the massive button to see a dog 🐕! Don't forget to admire it for a while.</p>
-    <button @click="fetchDoggo">SHOW ME DOGGO NOW</button>
+    <button v-on:click="fetchDoggo">SHOW ME DOGGO NOW</button>
 
     <div class="dog-info" v-if="dogUrl">
       <img :src="dogUrl" alt="A dog" style="max-width: 80%; border: 5px dashed red;" />
