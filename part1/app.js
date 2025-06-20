@@ -50,8 +50,7 @@ async function insertTestData() {
     (SELECT user_id FROM Users WHERE username = 'bobwalker'),
     (SELECT user_id FROM Users WHERE username = 'carol123'),
     5,
-    'Great job!'
-  )');
+    'Great job!')');
 
     console.log("Test data inserted.");
   } catch (err) {
