@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 8000;
 const db = require('./db');
 
 app.use(express.json());
@@ -35,9 +35,9 @@ async function insertTestData() {
     await db.execute(`INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
       (2, 3, 2, 5, 'Great job!')`);
 
-    console.log("✅ Test data inserted.");
+    console.log("Test data inserted.");
   } catch (err) {
-    console.error("❌ Error inserting test data:", err);
+    console.error("Error inserting test data:", err);
   }
 }
 
