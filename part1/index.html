@@ -33,7 +33,7 @@
     <button v-on:click="fetchDoggo">SHOW ME DOGGO NOW</button>
 
     <div class="dog-info" v-if="dogUrl">
-      <img src="placeholder" :src="dogUrl" alt="A dog" style="max-width: 80%; border: 5px dashed red;" />
+      <img :src="dogUrl" src="placeholder" alt="A dog" style="max-width: 80%; border: 5px dashed red;" />
       <p>This is your dog today: SPARKLEBLASTER THE 3RD, a royal retriever-terrier-corgi hybrid.</p>
       <p>Wow isn't that something.</p>
     </div>
